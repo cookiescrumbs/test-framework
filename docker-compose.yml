@@ -26,5 +26,18 @@ services:
         - /backend/node_modules
       command: npm run start
 
+    api-tests:
+      build: 
+        context: .
+        dockerfile: api-tests.Dockerfile
+      environment: 
+        API_BASE_URL: 'http://backend:3001'
+      volumes:
+        - ${PWD}/api-tests:/api-tests
+        # use the node_modules from inside the container and not from local machine
+        - /api-tests/node_modules
+      depends_on:
+          - backend
+    
 
     
