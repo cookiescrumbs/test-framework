@@ -18,6 +18,8 @@ services:
       build: 
         context: .
         dockerfile: backend.Dockerfile
+      environment: 
+        ENV: 
       ports:
         - 3001:3001
       volumes: 
