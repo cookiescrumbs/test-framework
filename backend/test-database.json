@@ -1,0 +1,45 @@
+{
+    "customers":[
+      {
+        "id":1,
+        "name":"Small company",
+        "employees":10,
+        "contactInfo":{"name":"John Smith","email":"jsmith@americasinc.com"}
+      },
+      {
+        "id":2,
+        "name":"Small company",
+        "employees": 2,
+        "contactInfo":{"name":"John Smith","email":"jsmith@americasinc.com"}
+      },
+      {
+        "id":3,
+        "name":"Medium company",
+        "employees": 1000,
+        "contactInfo":{"name":"Jose Martinez","email":"martines@cair.com"}
+      },
+      {
+        "id":4,
+        "name":"Medium company",
+        "employees": 11,
+        "contactInfo":{"name":"Jose Martinez","email":"martines@cair.com"}
+      },
+      {
+        "id":5,
+        "name":"Big company",
+        "employees": 1001,
+        "contactInfo":{"name":"Jose Martinez","email":"martines@cair.com"}
+      },
+      {
+        "id":6,
+        "name":"Big company",
+        "employees": 2000,
+        "contactInfo":{"name":"Jose Martinez","email":"martines@cair.com"}
+      },
+      {
+        "id":7,
+        "name":"No contact into",
+        "employees": 2000
+      }
+    ]
+}
