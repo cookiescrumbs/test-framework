@@ -1,0 +1,30 @@
+version: '3.7'
+services:
+    frontend: 
+      build: 
+        context: .
+        dockerfile: frontend.Dockerfile
+      ports:
+        - 3000:3000
+      depends_on:
+        - "backend"
+      volumes: 
+        - ${PWD}/frontend:/frontend
+        # use the node_modules from inside the container and not from local machine
+        - /frontend/node_modules
+      command: npm run start
+  
+    backend: 
+      build: 
+        context: .
+        dockerfile: backend.Dockerfile
+      ports:
+        - 3001:3001
+      volumes: 
+        - ${PWD}/backend:/backend
+        # use the node_modules from inside the container and not from local machine
+        - /backend/node_modules
+      command: npm run start
+
+
+    
