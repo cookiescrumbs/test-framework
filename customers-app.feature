@@ -26,9 +26,11 @@ Scenario: Contact Datails Screen - No contact info available
 Scenario: Contact Datails Screen - Back to the Customer List Screen
     When a app user clicks the "back to list" button
     Then they should be presented with the Customer List Screen
+    
 
-
-
+Scenario: App user provides their name
+    Given the app user provides their name
+    Then their name should be in the response
 
 Scenario: Contact info is not in the system
     When the customer's contact information is not in the system
@@ -39,9 +41,9 @@ Scenario: A small company
     Then the company is considered Small
 
 Scenario: A medium company
-    When the number of employees is 10000 or less 
+    When the number of employees is 1000 or less 
     Then the company is considered Medium
 
-Scenario: A large company
+Scenario: A big company
     When the number of employees is greater than 1000 
-    Then the company is considered Big
+    Then the company is considered big
