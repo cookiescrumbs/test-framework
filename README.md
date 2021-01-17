@@ -2,12 +2,19 @@
 
 ## Task 1: Create an automated API level test scenario ##
 
-Build a script/program (using any language/framework/library you want) that runs tests to assert the top 3 API non-compliant scenarios you found;
-Create a Readme file telling us how to run it; and
-Commit and push everything to a folder called api-tests on the public repository you've created for the exercise.
+### Usage
+ 
+The only dependency you need to run the framework is [Docker](https://docs.docker.com/engine/install/)
 
+Just run `ENV=test docker-compose run api-tests npm run test` to run the api-tests.
+ 
+
+### Improvements
+
+I created a pseudo test database and dev database on the file system. The application uses the appropriate file depending which mode it is run in `ENV=test` or `ENV=dev`. To improve this I'd create a database container and add this to the Docker Compose. Enabling Direct Model Access (DMA) would facilitate the insertion of test data from the tests into the database.
+ 
+I'd leverage Typescript in the application code and have static types as the foundation of the test pyramid. Catching type error at compile time and whilst developing.
 
 ## Task 2: Create an automated UI level test scenario ##
-
 
 ## Task 3: Create a CI pipeline
