@@ -2,8 +2,8 @@ const express = require('express')
 var bodyParser = require("body-parser");
 var app = express();
 
-const devDatabase  = require('./dev-database.json');
-const testDatabase  = require('./test-database.json');
+const devDatabase  = require('/database/dev-database.json');
+const testDatabase  = require('/database/test-database.json');
 
 let database = devDatabase;
 

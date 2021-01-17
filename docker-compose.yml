@@ -24,6 +24,8 @@ services:
         - 3001:3001
       volumes: 
         - ${PWD}/backend:/backend
+        # pseudo database 
+        - ${PWD}/database:/database
         # use the node_modules from inside the container and not from local machine
         - /backend/node_modules
       command: npm run start
@@ -40,6 +42,7 @@ services:
         - /api-tests/node_modules
       depends_on:
           - backend
+    
     
 
     
