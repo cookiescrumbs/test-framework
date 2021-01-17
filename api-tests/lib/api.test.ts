@@ -33,7 +33,7 @@ describe('Customer API', () => {
   describe('Scenario: A small company', () => {
     describe('When the number of employees is 10 or less', () => {
         test('Then the company is considered Small', async () => {
-            expect(response.body.customers[0].size.toLowerCase()).toEqual('smallsss');
+            expect(response.body.customers[0].size.toLowerCase()).toEqual('small');
             expect(response.body.customers[1].size.toLowerCase()).toEqual('small');
         });
     });  
