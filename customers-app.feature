@@ -27,7 +27,6 @@ Scenario: Contact Datails Screen - Back to the Customer List Screen
     When a app user clicks the "back to list" button
     Then they should be presented with the Customer List Screen
     
-
 Scenario: App user provides their name
     Given the app user provides their name
     Then their name should be in the response

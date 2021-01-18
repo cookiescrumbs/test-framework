@@ -4,6 +4,8 @@ services:
       build: 
         context: .
         dockerfile: frontend.Dockerfile
+      environment:
+        REACT_APP_API_BASE_URL:
       ports:
         - 3000:3000
       depends_on:
@@ -41,6 +43,23 @@ services:
         # use the node_modules from inside the container and not from local machine
         - /api-tests/node_modules
       depends_on:
+          - backend
+
+    ui-tests:
+      build: 
+        context: .
+        dockerfile: ui-tests.Dockerfile
+      environment:
+        CYPRESS_baseUrl: 'http://frontend:3000'
+      volumes:
+        - ${PWD}/ui-tests:/ui-tests
+        # include the test framework shared library 
+        - ${PWD}/database:/database
+        - ${PWD}/test-framework-lib:/test-framework-lib
+        # use the node_modules from inside the container and not from local machine
+        - /ui-tests/node_modules
+      depends_on:
+          - frontend
           - backend
     
     

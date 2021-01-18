@@ -1,7 +1,6 @@
   import React, {Component} from 'react';
 
-const serverPort = 3001; 
-const serverURL = `http://localhost:${serverPort}/`;
+let serverURL = process.env.REACT_APP_API_BASE_URL;
 
 class CustomerApp extends Component {
 
@@ -95,6 +94,8 @@ class CustomerApp extends Component {
 function App() {
   return (
     <div>
+      <small>You are running this application in <b>{process.env.NODE_ENV}</b> mode.</small>
+      <small>Backend url <b>{process.env.REACT_APP_API_BASE_URL}</b></small>
       <h1>Welcome to Customer App</h1>
       <CustomerApp/>
     </div>

@@ -1,0 +1,22 @@
+{
+  "name": "test-framework",
+  "version": "1.0.0",
+  "description": "A test framework that brings micro service back together in a mono repo and composes them into a monolith for testing",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cookiescrumbs/test-framework.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cookiescrumbs/test-framework/issues"
+  },
+  "homepage": "https://github.com/cookiescrumbs/test-framework#readme"
+}
