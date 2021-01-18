@@ -45,3 +45,5 @@ Added test anchors in the HTML for selecting elements in the tests
  
 Created a pipeline on Github Actions that runs the UI & API tests.
 They both run in Docker Compose and utilities docker layer caching to speed up the build time in the pipeline.
+
+The tests are run on every PUSH.
