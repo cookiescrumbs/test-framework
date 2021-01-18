@@ -1,15 +1,19 @@
 # Test and Automation Challenge #
 
-
-
-
-## Task 1: Create an automated API level test scenario ##
-
 #### Usage
  
 The only dependency you need to run the framework is [Docker](https://docs.docker.com/engine/install/)
 
-Just run `ENV=test docker-compose run api-tests npm run test` to run the api-tests.
+## Development Sandbox
+
+This repo uses docker-compose to create a development sandbox because it's important to start with the developer experience.
+
+You can run the whole app in development mode doing this command `npm run sandbox` and use it at http://localhost:3000
+
+
+## Task 1: Create an automated API level test scenario ##
+
+Just run `npm run api-tests` to run the api-tests.
  
 #### Improvements
 
@@ -17,29 +21,29 @@ I created a pseudo test database and dev database on the file system. The applic
 
 I'd leverage Typescript in the application code and have static types as the foundation of the test pyramid. Catching type error at compile time and whilst developing.
 
+
 ## Task 2: Create an automated UI level test scenario ##
 
-Just run `REACT_APP_API_BASE_URL=http://backend:3001 docker-compose run ui-tests npm run test` to run the ui-tests 
+Just run `npm run ui-tests` to run the ui-tests 
 
 #### Improvements
 
 I use the psuedo dev database directly in the ui-tests to assert the expectations are correct.
 Ideally this would be an actual database and not JSON files in a directory.
 
-Wrap the docker commands in a npm script.
+Created app specific methods for the ui-testing by extending Cypress.
 
+Used page objects or extend Cypress with methods that encapsulted the CSS selectors used in the tests.
+
+Not used the UI to setup state for the app tests.
+
+Added test anchors in the HTML for selelcting elements in the tests
 
 ## Task 3: Create a CI pipeline
 
 
 #### Improvements
 
-
-## Development Sandbox
-
-This repo uses docker-compose to create a development sandbox. 
-
-You can run the whole app in development mode `REACT_APP_API_BASE_URL=http://localhost:3001 docker-compose up` and use it at http://localhost:3000 
 
 
 

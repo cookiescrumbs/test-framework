@@ -1,24 +1,6 @@
 /// <reference types="cypress" />
 
-interface CustomerAppApi {
-    name: string;
-    timestamp: number;
-    customers: Array<Customer>
-}
-
-interface Customer {
-    id: number;
-    name: string;
-    employees: number;
-    contactInfo: ContactInfo;
-    size: number;
-}
-
-interface ContactInfo { 
-    name: string;
-    email: string;
-}
-
+import { CustomerAppApi, Customer } from '../../../test-framework-lib/types';
 import { sizeOfCustomer } from '../../../test-framework-lib/utils';
 
 let database: CustomerAppApi;
@@ -26,11 +8,17 @@ let database: CustomerAppApi;
 context('Customer App', () => {
     const appUserName = 'Jimi Hendrix';
     const errorMessage = 'Please provide your name';
+    const missingContactInfoMessage = 'No contact info available';
+
+    let customerMissingContactDetails: Customer;
+    let firstCustomer: Customer;
 
     before(() => {
         // read data from pseudo database
         cy.readFile('../database/dev-database.json').then((data) => {
             database = data;
+            customerMissingContactDetails = database.customers[3];
+            firstCustomer = database.customers[0];
         });
     });
 
@@ -62,6 +50,7 @@ context('Customer App', () => {
             it('Then you should be able to see the "Name", "# of Employees", "Size" of all the customers in the system',() => {
                 cy.get('#name').type(appUserName);
                 cy.get('[type="button"]').click();
+
                 database.customers.map((customer, index) => {
                     const row = index + 1;
                     const size = sizeOfCustomer(customer.employees);
@@ -72,6 +61,50 @@ context('Customer App', () => {
             });
         });
     });    
+
+
+    describe('Scenario: Contacts Detail Screen', () => {
+        describe('When the user selects a name of the company from the Customer List Screen', () => {
+            it('Then they should be presented with the Contact Detail Screen showing the "Name", "# of Employees", "Size"',() => {
+                const size =  sizeOfCustomer(firstCustomer.employees);
+                cy.get('#name').type(appUserName);
+                cy.get('[type="button"]').click();
+                cy.get(`a:contains(${firstCustomer.name})`).click();
+                cy.get('body').contains(firstCustomer.name);
+                cy.get('body').contains(firstCustomer.employees);
+                cy.get('body').contains(size);
+            });
+        });
+    }); 
+
+    describe('Scenario: Contact Datails Screen - No contact info available', () => {
+        describe('When the user selects a name of the company from the Customer List Screen', () => {
+            describe('And the customer doesn\'t have contact info', () => {
+                it('Then a message "No contact info available" should be shown',() => {
+                    cy.get('#name').type(appUserName);
+                    cy.get('[type="button"]').click();
+                    cy.get(`a:contains(${customerMissingContactDetails.name})`).click();
+                    cy.get('body').contains(missingContactInfoMessage);
+                });
+                
+            });
+        });
+    });
+
+    describe('Scenario: Contact Datails Screen - Back to the Customer List Screen', () => {
+        describe('When a app user clicks the "back to list" button', () => {
+            describe('Then they should be presented with the Customer List Screen', () => {
+                it('Then a message "No contact info available" should be shown',() => {
+                    cy.get('#name').type(appUserName);
+                    cy.get('[type="button"]').click();
+                    cy.get(`a:contains(${firstCustomer.name})`).click();
+                    cy.get('[type="button"]').click();
+                    cy.get('thead > tr > :nth-child(1)').contains('Name');
+                    cy.get('thead > tr > :nth-child(2)').contains('# of Employees');
+                    cy.get('thead > tr > :nth-child(3)').contains('Size');
+                });
+                
+            });
+        });
+    });
 });
-
-
