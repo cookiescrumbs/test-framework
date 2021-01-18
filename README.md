@@ -11,7 +11,7 @@ The containers are used locally for development and for running test and the app
 This limits the "Works on my machine" scenario. Reducing the time spent installing dependencies and fixing issues locally and on the pipeline.
 
 
-You can run the whole app in development mode doing this command `npm run sandbox` and use it at http://localhost:3000
+You can run the whole app in development mode by running `npm run sandbox` and view it at http://localhost:3000
  
  
 ## Task 1: Create an automated API level test scenario ##
