@@ -9,7 +9,11 @@
     "sandbox": "docker-compose down && REACT_APP_API_BASE_URL=http://localhost:3001 docker-compose up",
     "ui-tests": "docker-compose down && REACT_APP_API_BASE_URL=http://backend:3001 docker-compose run ui-tests npm run test",
     "api-tests": "docker-compose down && ENV=test docker-compose run api-tests npm run test",
-    "cypress:open": "CYPRESS_baseUrl=http://localhost:3000 npm --prefix ./ui-tests run cypress:open"
+    "cypress:open": "CYPRESS_baseUrl=http://localhost:3000 npm --prefix ./ui-tests run cypress:open",
+    "ui-tests:install": "npm --prefix ./ui-tests install",
+    "api-tests:install": "npm --prefix ./api-tests install",
+    "setup-local-dev": "npm run ui-tests:install && npm run api-tests:install"
+
   },
   "repository": {
     "type": "git",
